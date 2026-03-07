@@ -1,0 +1,121 @@
+body {
+    width: 250px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #111214;
+    /* Default Roblox dark style */
+    color: #ffffff;
+    user-select: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-bottom: 2px solid #2b2e35;
+    padding-bottom: 12px;
+}
+
+.logo {
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+}
+
+h2 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #f2f4f5;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #bdc1c6;
+}
+
+input[type="number"] {
+    background: #232527;
+    border: 1px solid #3b3e44;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+}
+
+input[type="number"]:focus {
+    border-color: #00b06f;
+    /* Green highlight to feel seamless */
+    box-shadow: 0 0 0 2px rgba(0, 176, 111, 0.2);
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #00b06f;
+    cursor: pointer;
+}
+
+.checkbox-group label {
+    cursor: pointer;
+}
+
+button {
+    background: #00b06f;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #00935d;
+}
+
+button:active {
+    background: #00774a;
+}
+
+#status {
+    text-align: center;
+    font-size: 13px;
+    min-height: 18px;
+    font-weight: 500;
+}
+
+#status.success {
+    color: #00b06f;
+}
+
+#status.error {
+    color: #ff4d4d;
+}

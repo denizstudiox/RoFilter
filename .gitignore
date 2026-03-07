@@ -1,0 +1,11 @@
+# OS Generated
+.DS_Store
+Thumbs.db
+
+# Extension Packages
+*.zip
+*.crx
+
+# Editor
+.vscode/
+.idea/
