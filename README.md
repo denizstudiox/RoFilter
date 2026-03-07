@@ -10,7 +10,6 @@ RoFilter is a Google Chrome and Chromium-based browser extension created by **Ap
 *   **Minimum Active Players:** Enter a minimum player count (e.g., 1000). Games with fewer current players will be removed from your feed.
 *   **Banned Title Words:** Enter specific words (comma-separated, e.g., 'simulator, tycoon'). Any game containing these words in its title will be hidden.
 *   **Remove Sponsored Games:** A simple toggle to hide all sponsored game tiles, keeping your feed organic.
-*   **Infinite Scroll Support:** Automatically handles Roblox's infinite scroll, ensuring new games continue to load even when many are filtered out.
 
 ## Installation (Unpacked)
 1. Download or clone this repository to your computer.
