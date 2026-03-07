@@ -117,13 +117,16 @@ function forceLoadMoreGames() {
     const visibleTiles = document.querySelectorAll('li.list-item:not(.roblox-filter-hidden)');
 
     // Eğer sayfadaki toplam görünür oyun sayısı azsa veya sayfa kaydırma gerektirmeyecek kadar kısaysa
-    if (visibleTiles.length > 0 && visibleTiles.length < 12) {
-        // Roblox'un yeni oyunları yüklemesi için sayfanın altına kaydırma simülasyonu yapıyoruz
-        window.scrollBy(0, 10);
-        setTimeout(() => window.scrollBy(0, -10), 50);
+    if (visibleTiles.length > 0 && visibleTiles.length < 18) {
+        // Roblox'un lazy-loader'ını tetiklemek için daha güçlü bir kaydırma simülasyonu
+        const currentScrollY = window.scrollY;
+        window.scrollTo(0, document.body.scrollHeight);
 
-        // Veya scroll eventini manuel olarak ateşleyelim
-        window.dispatchEvent(new Event('scroll'));
+        setTimeout(() => {
+            window.scrollTo(0, currentScrollY);
+            // Çoğu modern framework için scroll eventini manuel olarak ateşleyelim
+            window.dispatchEvent(new Event('scroll'));
+        }, 100);
     }
 }
 

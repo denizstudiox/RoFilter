@@ -11,7 +11,6 @@ RoFilter is a Google Chrome and Chromium-based browser extension created by **Ap
 *   **Banned Title Words:** Enter specific words (comma-separated, e.g., 'simulator, tycoon'). Any game containing these words in its title will be hidden.
 *   **Remove Sponsored Games:** A simple toggle to hide all sponsored game tiles, keeping your feed organic.
 *   **Infinite Scroll Support:** Automatically handles Roblox's infinite scroll, ensuring new games continue to load even when many are filtered out.
-*   **Real-time Updates:** Changes apply immediately when you save, prompting a clean manual page reload to refresh your feed.
 
 ## Installation (Unpacked)
 1. Download or clone this repository to your computer.
