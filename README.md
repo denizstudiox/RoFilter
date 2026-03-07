@@ -7,9 +7,11 @@ RoFilter is a Google Chrome and Chromium-based browser extension created by **Ap
 
 ## Features
 *   **Rating Filter:** Specify a minimum rating percentage (e.g., 60%). Any game with a rating below this threshold will be hidden from your view.
+*   **Minimum Active Players:** Enter a minimum player count (e.g., 1000). Games with fewer current players will be removed from your feed.
+*   **Banned Title Words:** Enter specific words (comma-separated, e.g., 'simulator, tycoon'). Any game containing these words in its title will be hidden.
 *   **Remove Sponsored Games:** A simple toggle to hide all sponsored game tiles, keeping your feed organic.
 *   **Infinite Scroll Support:** Automatically handles Roblox's infinite scroll, ensuring new games continue to load even when many are filtered out.
-*   **Real-time Updates:** Changes apply immediately when you save, prompting a clean page reload to refresh your feed.
+*   **Real-time Updates:** Changes apply immediately when you save, prompting a clean manual page reload to refresh your feed.
 
 ## Installation (Unpacked)
 1. Download or clone this repository to your computer.
@@ -22,8 +24,10 @@ RoFilter is a Google Chrome and Chromium-based browser extension created by **Ap
 1. Go to any Roblox games page (e.g., `roblox.com/discover`).
 2. Click the RoFilter extension icon in your toolbar.
 3. Enter your desired minimum rating percentage.
-4. Toggle the "Hide Sponsored Games" option if desired.
-5. Click **Save and Apply** and refresh the page if instructed.
+4. Set a minimum active player count (optional).
+5. Add any banned words to filter out specific game types (optional).
+6. Toggle the "Hide Sponsored Games" option if desired.
+7. Click **Save and Apply** and refresh the page to see your clean feed.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
