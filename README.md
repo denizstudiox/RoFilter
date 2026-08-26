@@ -1,34 +1,41 @@
-# RoFilter by Apeira Studios
+# RoFilter
 
-![RoFilter Extension](preview.png)
+**Your feed. Your rules.**
 
-## Overview
-RoFilter is a Google Chrome and Chromium-based browser extension created by **Apeira Studios**. It enhances your Roblox browsing experience by allowing you to filter out games on the Discover and Home pages based on their like-to-dislike ratio. It also has a built-in feature to completely hide "Sponsored" games from your feed.
+RoFilter is a lightweight Chrome extension by [Apeira Studios](https://apeirastudios.me/) that gives you control over the games shown on Roblox Home and Discover pages.
 
-## Features
-*   **Rating Filter:** Specify a minimum rating percentage (e.g., 60%). Any game with a rating below this threshold will be hidden from your view.
-*   **Minimum Active Players:** Enter a minimum player count (e.g., 1000). Games with fewer current players will be removed from your feed.
-*   **Banned Title Words:** Enter specific words (comma-separated, e.g., 'simulator, tycoon'). Any game containing these words in its title will be hidden.
-*   **Remove Sponsored Games:** A simple toggle to hide all sponsored game tiles, keeping your feed organic.
+[Install from the Chrome Web Store](https://chromewebstore.google.com/detail/rofilter-game-quality-enh/mfbdhlnbimbigcfmmfonofkaccfpfion)
 
-## Installation (Unpacked)
-1. Download or clone this repository to your computer.
-2. Open your Chromium-based browser (Chrome, Brave, Edge, etc.) and navigate to `chrome://extensions/`.
-3. Enable **Developer mode** in the top right corner.
-4. Click **Load unpacked** and select the directory containing the extension files.
-5. The extension is now installed and ready to use!
+![RoFilter settings](store_screenshot_1280x800.png)
 
-## Usage
-1. Go to any Roblox games page (e.g., `roblox.com/discover`).
-2. Click the RoFilter extension icon in your toolbar.
-3. Enter your desired minimum rating percentage.
-4. Set a minimum active player count (optional).
-5. Add any banned words to filter out specific game types (optional).
-6. Toggle the "Hide Sponsored Games" option if desired.
-7. Click **Save and Apply** and refresh the page to see your clean feed.
+## What it does
+
+- Hides games below your minimum rating percentage.
+- Hides games below your minimum active-player count.
+- Filters titles using your own comma-separated keywords.
+- Removes sponsored game tiles when you choose.
+- Applies changes to the active page without collecting browsing or usage data.
+
+## Privacy and permissions
+
+RoFilter requests only Chrome's `storage` permission. Your filter settings are stored with Chrome sync so they can follow your signed-in browser profile. Apeira Studios does not receive or sell your settings, browsing history, or usage data.
+
+See [PRIVACY.md](PRIVACY.md) for the complete policy.
+
+## Install from source
+
+1. Clone or download this repository.
+2. Open `chrome://extensions/` in Chrome or another Chromium-based browser.
+3. Enable **Developer mode**.
+4. Choose **Load unpacked** and select this directory.
+5. Open a Roblox Home or Discover page, then configure RoFilter from the toolbar.
+
+## Development
+
+The extension uses Manifest V3 with plain HTML, CSS, and JavaScript. No build step or remote code is required.
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
-&copy; 2026 Apeira Studios
+Released under the [MIT License](LICENSE).
+
+RoFilter is an independent project and is not affiliated with, endorsed by, or sponsored by Roblox Corporation.

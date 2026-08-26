@@ -16,24 +16,32 @@ function getPercentage(text) {
 function parsePlayerCount(text) {
     if (!text) return 0;
 
-    text = text.trim().toUpperCase();
-    let multiplier = 1;
+    const normalized = text.trim().toUpperCase().replace(',', '.');
+    const match = normalized.match(/([\d.]+)\s*([KMB])?/);
+    if (!match) return 0;
 
-    if (text.endsWith('K')) {
-        multiplier = 1000;
-        text = text.slice(0, -1);
-    } else if (text.endsWith('M')) {
-        multiplier = 1000000;
-        text = text.slice(0, -1);
-    } else if (text.endsWith('B')) {
-        multiplier = 1000000000;
-        text = text.slice(0, -1);
+    const count = parseFloat(match[1]);
+    const multipliers = { K: 1_000, M: 1_000_000, B: 1_000_000_000 };
+    return Number.isFinite(count) ? Math.floor(count * (multipliers[match[2]] || 1)) : 0;
+}
+
+function setTileVisibility(tile, shouldHide) {
+    if (shouldHide) {
+        if (tile.dataset.rofilterHidden !== 'true') {
+            tile.dataset.rofilterOriginalDisplay = tile.style.display || '';
+        }
+        tile.dataset.rofilterHidden = 'true';
+        tile.style.setProperty('display', 'none', 'important');
+        return;
     }
 
-    const count = parseFloat(text);
-    if (isNaN(count)) return 0;
-
-    return Math.floor(count * multiplier);
+    if (tile.dataset.rofilterHidden === 'true') {
+        const originalDisplay = tile.dataset.rofilterOriginalDisplay || '';
+        if (originalDisplay) tile.style.setProperty('display', originalDisplay);
+        else tile.style.removeProperty('display');
+        delete tile.dataset.rofilterHidden;
+        delete tile.dataset.rofilterOriginalDisplay;
+    }
 }
 
 // Oyunu sayfa içerisinden gizler/gösterir
@@ -48,8 +56,7 @@ function filterGames() {
         if (currentRemoveSponsored && !shouldHide) {
             // "Sponsored" etiketine sahip olan geniş kartları veya direkt etiketin kendisini arayalım
             const sponsoredLabel = tile.querySelector('.sponsored-ad-label, [title="Sponsored"], [aria-label="Sponsored"]');
-            if (sponsoredLabel && (sponsoredLabel.textContent.includes('Sponsored') || sponsoredLabel.textContent.includes('Sponsorlu') || true)) {
-                // Eğer etiket bulunduysa içeriğine bakmaksızın gizle (garanti)
+            if (sponsoredLabel) {
                 shouldHide = true;
             }
         }
@@ -72,7 +79,7 @@ function filterGames() {
             // Kartın içinde "vote-percentage-label" sınıfını bul
             const ratingElement = tile.querySelector('.vote-percentage-label');
             if (ratingElement) {
-                const ratingText = ratingElement.getContext || ratingElement.textContent;
+                const ratingText = ratingElement.textContent || '';
                 const ratingValue = getPercentage(ratingText);
 
                 if (ratingValue !== null) {
@@ -97,37 +104,8 @@ function filterGames() {
             }
         }
 
-        if (shouldHide) {
-            tile.style.display = 'none';
-            tile.classList.add('roblox-filter-hidden');
-        } else {
-            tile.style.display = ''; // Eşit veya büyükse göster
-            tile.classList.remove('roblox-filter-hidden');
-        }
+        setTileVisibility(tile, shouldHide);
     });
-
-    // Filtreleme sonrasında ekranda çok az oyun kalırsa takılmayı önlemek için sayfanın altına doğru kaydırma veya yükleme tetikle
-    forceLoadMoreGames();
-}
-
-// Bazen çok fazla oyun silindiği için sayfa kaydırılamaz hale geliyor ve Roblox yeni oyun yüklemiyor.
-// Bunu çözmek için kaydırma çubuğu kaybolduysa veya çok az oyun kaldıysa aşağı kaydırma tetikliyoruz.
-function forceLoadMoreGames() {
-    // Görünür olan oyun kutularını bul
-    const visibleTiles = document.querySelectorAll('li.list-item:not(.roblox-filter-hidden)');
-
-    // Eğer sayfadaki toplam görünür oyun sayısı azsa veya sayfa kaydırma gerektirmeyecek kadar kısaysa
-    if (visibleTiles.length > 0 && visibleTiles.length < 18) {
-        // Roblox'un lazy-loader'ını tetiklemek için daha güçlü bir kaydırma simülasyonu
-        const currentScrollY = window.scrollY;
-        window.scrollTo(0, document.body.scrollHeight);
-
-        setTimeout(() => {
-            window.scrollTo(0, currentScrollY);
-            // Çoğu modern framework için scroll eventini manuel olarak ateşleyelim
-            window.dispatchEvent(new Event('scroll'));
-        }, 100);
-    }
 }
 
 // Başlangıçta kaydedilmiş veriyi al ve sayfayı filtrele

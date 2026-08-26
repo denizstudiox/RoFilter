@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>RoFilter by Apeira Studios</title>
   <link rel="stylesheet" href="popup.css">
 </head>
-
 <body>
   <div class="container">
-    <div class="header">
-      <img src="https://static.wikia.nocookie.net/roblox/images/a/a6/Roblox_Logo_2022.svg" alt="Logo" class="logo"
-        onerror="this.style.display='none'">
-      <h2>RoFilter</h2>
-    </div>
+    <header class="header">
+      <img src="store_icon_128x128.png" alt="" class="logo">
+      <div>
+        <h1>RoFilter</h1>
+        <p>Your feed. Your rules.</p>
+      </div>
+    </header>
 
-    <div class="input-group">
-      <label for="threshold">Minimum Rating (%)</label>
-      <input type="number" id="threshold" min="0" max="100" placeholder="e.g. 60">
-    </div>
+    <form id="settingsForm" novalidate>
+      <div class="input-group">
+        <div class="label-row">
+          <label for="threshold">Minimum rating</label>
+          <span>%</span>
+        </div>
+        <input type="number" id="threshold" min="0" max="100" step="1" inputmode="numeric" placeholder="60" required>
+      </div>
 
-    <div class="input-group">
-      <label for="minPlayers">Minimum Active Players</label>
-      <input type="number" id="minPlayers" min="0" placeholder="e.g. 1000">
-    </div>
+      <div class="input-group">
+        <label for="minPlayers">Minimum active players</label>
+        <input type="number" id="minPlayers" min="0" step="1" inputmode="numeric" placeholder="1,000">
+      </div>
 
-    <div class="input-group">
-      <label for="bannedWords">Banned Title Words (comma separated)</label>
-      <input type="text" id="bannedWords" placeholder="e.g. anime, simulator">
-    </div>
+      <div class="input-group">
+        <label for="bannedWords">Blocked title words</label>
+        <input type="text" id="bannedWords" placeholder="anime, simulator" autocomplete="off">
+        <p class="hint">Separate multiple words with commas.</p>
+      </div>
 
-    <div class="checkbox-group">
-      <input type="checkbox" id="removeSponsored">
-      <label for="removeSponsored">Hide Sponsored Games</label>
-    </div>
+      <label class="toggle-row" for="removeSponsored">
+        <span>
+          <strong>Hide sponsored games</strong>
+          <small>Remove sponsored tiles from your feed.</small>
+        </span>
+        <input type="checkbox" id="removeSponsored">
+      </label>
 
-    <button id="saveBtn">Save and Apply</button>
-    <div id="status"></div>
+      <button id="saveBtn" type="submit">Save and apply</button>
+      <div id="status" role="status" aria-live="polite"></div>
+    </form>
 
-    <div style="text-align: center; margin-top: 10px; font-size: 11px; color: #888;">
-      &copy; 2026 Apeira Studios
-    </div>
+    <footer>Apeira Studios · Not affiliated with Roblox</footer>
   </div>
   <script src="popup.js"></script>
 </body>
-
 </html>

@@ -1,25 +1,38 @@
 {
-    "manifest_version": 3,
-    "name": "RoFilter: Game Quality Enhancer",
-    "version": "1.1",
-    "author": "Apeira Studios",
-    "description": "Hides Roblox games below your specified rating percentage and removes sponsored games.",
-    "action": {
-        "default_popup": "popup.html",
-        "default_title": "Filter Settings"
-    },
-    "content_scripts": [
-        {
-            "matches": [
-                "*://*.roblox.com/*"
-            ],
-            "js": [
-                "content.js"
-            ],
-            "run_at": "document_idle"
-        }
-    ],
-    "permissions": [
-        "storage"
-    ]
+  "manifest_version": 3,
+  "name": "RoFilter — Discovery Feed Filter",
+  "version": "1.2.0",
+  "author": "Apeira Studios",
+  "description": "Filter Roblox games by rating, active players and title keywords, then hide sponsored results for a cleaner feed.",
+  "homepage_url": "https://apeirastudios.me/",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "store_icon_128x128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "RoFilter settings",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "store_icon_128x128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.roblox.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [
+    "storage"
+  ]
 }
